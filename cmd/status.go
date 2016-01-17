@@ -113,7 +113,7 @@ func Status() {
 	println("## drafts")
 	for i, draft := range drafts {
 		val, _ := dir.dir.Header(draft)
-		fmt.Printf("%02d: %s - %s\n", i+1, val.Get("To"), val.Get("Subject"))
+		fmt.Printf("[%d] To: %s // Subject: %s\n", i+1, val.Get("To"), val.Get("Subject"))
 	}
 }
 
