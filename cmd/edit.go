@@ -1,15 +1,22 @@
 package cmd
 
 import (
-	"fmt"
 	"os"
+	"os/exec"
+	"fmt"
 	"strconv"
 
 	"github.com/spf13/cobra"
 )
 
 func Edit(identifier int) {
-
+	cmd := exec.Command("vim", "tmp")
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	if err := cmd.Run(); err != nil {
+		fmt.Printf("Error received from vim\n")
+		os.Exit(-1)
+	}
 }
 
 var editCmd = &cobra.Command{
