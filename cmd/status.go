@@ -2,10 +2,10 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/spf13/cobra"
 	"github.com/boltdb/bolt"
 	"github.com/go-ini/ini"
 	"github.com/luksen/maildir"
+	"github.com/spf13/cobra"
 	"log"
 	"os"
 	"path"
@@ -110,17 +110,21 @@ func Status() {
 		log.Fatal(err)
 	}
 
-	println("## drafts")
-	for i, draft := range drafts {
-		val, _ := dir.dir.Header(draft)
-		fmt.Printf("[%d] To: %s // Subject: %s\n", i+1, val.Get("To"), val.Get("Subject"))
+	if len(drafts) > 0 {
+		println("## drafts")
+		for i, draft := range drafts {
+			val, _ := dir.dir.Header(draft)
+			fmt.Printf("[%d] To: %s // Subject: %s\n", i+1, val.Get("To"), val.Get("Subject"))
+		}
+	} else {
+		println("No drafts")
 	}
 }
 
 var statusCmd = &cobra.Command{
 	Use:   "status",
 	Short: "Show draft status",
-	Long: `Show draft status`,
+	Long:  `Show draft status`,
 	Run: func(cmd *cobra.Command, args []string) {
 		Status()
 	},
