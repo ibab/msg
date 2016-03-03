@@ -18,7 +18,8 @@ func openEditor(file string) {
 	cmd.Stderr = os.Stderr
 	err := cmd.Run()
 	if err != nil {
-		log.Fatal(err)
+		println("Error received from vim")
+		os.Exit(-1)
 	}
 }
 

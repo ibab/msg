@@ -13,14 +13,8 @@ var cfgFile string
 // This represents the base command when called without any subcommands
 var RootCmd = &cobra.Command{
 	Use:   "msg",
-	Short: "The Little Mail Client that Could",
-	Long: `The Little Mail Client that Could
-	
-A minimal, command-line based mail client.
-In contrast to other terminal mail clients like mutt or alpine,
-msg tries to integrate well into your command line workflow.
-It provides a number of subcommands, each of which is designed
-to perform a single function for working with email messages.`,
+	Short: "A minimal command line mail client",
+	Long: `A minimal mail client designed to integrate into your command line workflow.`,
 }
 
 func Execute() {
