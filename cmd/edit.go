@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"os"
 	"fmt"
+	"os"
 	"strconv"
 
 	"github.com/spf13/cobra"
@@ -15,7 +15,7 @@ func Edit(identifier int) {
 var editCmd = &cobra.Command{
 	Use:   "edit <identifier>",
 	Short: "Edit a draft",
-	Long: ``,
+	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) < 1 {
 			fmt.Println("Error: Edit requires a draft identifier.")
