@@ -45,6 +45,7 @@ func NewCachedMailDir(mdirPath string, db *bolt.DB) (dir CachedMaildir) {
 // Make sure that mail info in db and maildir are identical
 // TODO Synchronize messages removed in maildir to db
 func SynchronizeInfo(cdir CachedMaildir, db *bolt.DB) {
+	cdir.dir.Unseen()
 	keys, err := cdir.dir.Keys()
 	if err != nil {
 		log.Fatal(err)
