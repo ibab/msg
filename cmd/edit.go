@@ -12,10 +12,17 @@ import (
 )
 
 func openEditor(file string) {
-	cmd := exec.Command("vim", file)
+	editor, exists := os.LookupEnv("EDITOR")
+
+	if !exists {
+		editor = "vim"
+	}
+	cmd := exec.Command(editor, file)
+
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
+
 	err := cmd.Run()
 	if err != nil {
 		println("Error received from vim")
