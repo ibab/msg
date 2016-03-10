@@ -89,7 +89,8 @@ func GetMaildirPath(key string) string {
 }
 
 func Status() {
-	db, err := bolt.Open("msg.db", 0600, nil)
+	home := os.Getenv("HOME")
+	db, err := bolt.Open(home + "/.msg.db", 0600, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
